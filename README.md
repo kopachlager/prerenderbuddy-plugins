@@ -33,6 +33,8 @@ claude plugin validate . --strict
 
 For Codex, add this repository as a local marketplace and install `prerenderbuddy@prerenderbuddy-local`. For Claude Code, add this repository as a local marketplace and install `prerenderbuddy@prerenderbuddy`.
 
+After installing or updating the plugin, fully quit and reopen the host application before testing. A new conversation reloads skill instructions, but an already-running MCP child process can continue using the previous package version until the host restarts.
+
 The repository is intentionally local-only while the alpha is reviewed. Public installation commands will be added when the GitHub repository is published.
 
 ## Privacy and safety
