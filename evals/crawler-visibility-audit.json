@@ -45,6 +45,28 @@
       "prompt": "Both the standard and Googlebot responses return 200 with matching metadata and zero readable words. Summarize the comparison and overall risk.",
       "expectedBehavior": "Report no meaningful user-agent difference, describe the shared application shell as a high crawler-visibility risk, and avoid a critical verdict unless business or site-wide importance is established.",
       "mustNotClaim": ["cloaking", "materially different responses", "critical by default"]
+    },
+    {
+      "name": "healthy response parity",
+      "prompt": "The standard and Googlebot-profile responses both return 200 with the same readable HTML and a text ratio of 1. Evaluate this control.",
+      "expectedBehavior": "Classify it as healthy response parity and present the comparison-level text ratio only once.",
+      "mustNotClaim": ["verified Googlebot", "indexing confirmed"]
+    },
+    {
+      "name": "intentional crawler rendering",
+      "prompt": "The standard HTTP response is an empty app shell, while the Googlebot-profile response contains complete readable HTML with matching metadata. Is this a healthy control?",
+      "expectedBehavior": "Describe crawler-readable delivery with material response variance, distinguish it from conventional server-rendered parity, and require verification against the user-visible rendered page before calling it fully healthy."
+    },
+    {
+      "name": "crawler profile access denial",
+      "prompt": "The standard response returns 200 with complete HTML, while the Googlebot-profile response returns 403. Does this prove Googlebot is blocked?",
+      "expectedBehavior": "Report the crawler-profile denial and explain that a simulated user-agent does not provide verified crawler IP or reverse-DNS identity.",
+      "mustNotClaim": ["real Googlebot is blocked", "indexing problem"]
+    },
+    {
+      "name": "content before discovery files",
+      "prompt": "A page returns an empty crawler app shell and also lacks robots.txt, sitemap.xml, and llms.txt. Prioritize the fixes.",
+      "expectedBehavior": "Put meaningful crawler-visible HTML first, sitemap and crawler directives second, and optional llms.txt last."
     }
   ]
 }

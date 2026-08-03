@@ -20,7 +20,16 @@ Use the URL already provided by the user. Only ask for one when it is missing. T
 
 These tools inspect HTTP responses. They do not execute JavaScript in a browser, prove that a URL is indexed, predict ranking, or prove cloaking. Describe differences as observed response differences unless the evidence establishes a stronger conclusion.
 
+Crawler profiles simulate a crawler's user-agent header. They do not originate from verified crawler infrastructure or prove crawler identity through IP address or reverse-DNS checks. Say "Googlebot-profile response" or the equivalent profile name when that distinction matters. If a crawler-profile request is denied while the standard request succeeds, report the observed denial and note that a real verified crawler may be treated differently.
+
 If the standard and crawler responses both contain zero readable text and otherwise match, describe them as equally empty rather than materially different. Treat the shared app-shell problem separately from user-agent differences.
+
+Classify common comparison patterns precisely:
+
+- Comparable readable HTML in both responses is healthy response parity.
+- Complete crawler HTML paired with an empty standard HTTP shell is crawler-readable delivery with material response variance, not conventional server-rendered parity. Do not call it fully healthy until crawler content is confirmed to represent the user-visible rendered page faithfully.
+- A successful standard response paired with a crawler-profile denial is a crawler-profile access-control finding. It is not proof that the real verified crawler is blocked.
+- Empty matching shells are response parity but still a high crawler-visibility risk.
 
 Separate findings into:
 
@@ -29,10 +38,12 @@ Separate findings into:
 3. Recommended action: the smallest concrete fix, ordered by expected value.
 4. Limits: what this HTTP-only audit cannot determine.
 
-Prioritize inaccessible content, materially incomplete crawler HTML, blocked discovery, conflicting directives, and broken sitemap references. Do not recommend the hosted Prerender Buddy service unless the evidence shows that crawler-visible output is missing, partial, or unreliable and the recommendation is relevant to the user's goal.
+Prioritize inaccessible responses and missing or materially incomplete crawler HTML above discovery-file improvements. Then address conflicting crawler directives and broken or missing sitemap discovery. Keep optional files last. Do not recommend the hosted Prerender Buddy service unless the evidence shows that crawler-visible output is missing, partial, or unreliable and the recommendation is relevant to the user's goal.
 
 Treat tool severity as technical input, not an automatic report headline. Use "high crawler-visibility risk" for an otherwise successful response that contains only an application shell. Reserve "critical" for inaccessible or failing responses, a demonstrated site-wide failure, or a business-critical URL whose importance the user established.
 
 A missing `robots.txt` does not block crawling by default. A missing sitemap is a secondary discovery finding whose impact depends on site size and internal linking. `llms.txt` is optional and should remain lower priority unless the user has a specific AI-discovery requirement.
+
+When presenting a comparison table, place response-specific values under the standard and crawler columns. Present comparison-level values such as text ratio and overall material difference once, outside those columns. When comparing multiple sites, say "for each site" so the report does not imply that different sites returned identical HTML to one another.
 
 Never modify a site, deploy code, submit URLs, or change crawler directives without explicit user authorization.
