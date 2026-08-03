@@ -25,7 +25,7 @@ if (claude.version !== "0.1.0") fail("Unexpected Claude alpha version.");
 
 const server = mcp.mcpServers?.prerenderbuddy;
 if (server?.command !== "npx") fail("MCP server must start through npx.");
-if (server?.args?.join(" ") !== "--yes @prerenderbuddy/mcp@0.1.4") {
+if (server?.args?.join(" ") !== "--yes @prerenderbuddy/mcp@0.1.5") {
   fail("MCP package must be pinned to the reviewed version.");
 }
 
