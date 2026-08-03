@@ -8,19 +8,20 @@ const fail = (message) => {
   throw new Error(message);
 };
 
-const codex = await readJson("plugins/prerenderbuddy/.codex-plugin/plugin.json");
-const claude = await readJson("plugins/prerenderbuddy/.claude-plugin/plugin.json");
-const mcp = await readJson("plugins/prerenderbuddy/.mcp.json");
+const codex = await readJson("plugins/prerender-buddy/.codex-plugin/plugin.json");
+const claude = await readJson("plugins/prerender-buddy/.claude-plugin/plugin.json");
+const mcp = await readJson("plugins/prerender-buddy/.mcp.json");
 const codexMarketplace = await readJson(".agents/plugins/marketplace.json");
 const claudeMarketplace = await readJson(".claude-plugin/marketplace.json");
 const evals = await readJson("evals/crawler-visibility-audit.json");
 
 for (const manifest of [codex, claude]) {
-  if (manifest.name !== "prerenderbuddy") fail("Plugin names must match.");
-  if (manifest.version !== "0.1.0") fail("Unexpected alpha version.");
+  if (manifest.name !== "prerender-buddy") fail("Plugin names must match.");
   if (manifest.mcpServers !== "./.mcp.json") fail("Manifest must use the shared MCP config.");
   if (manifest.skills !== "./skills/") fail("Manifest must use the shared skills directory.");
 }
+if (!/^0\.1\.0(?:\+codex\.[0-9]+)?$/.test(codex.version)) fail("Unexpected Codex alpha version.");
+if (claude.version !== "0.1.0") fail("Unexpected Claude alpha version.");
 
 const server = mcp.mcpServers?.prerenderbuddy;
 if (server?.command !== "npx") fail("MCP server must start through npx.");
@@ -28,17 +29,19 @@ if (server?.args?.join(" ") !== "--yes @prerenderbuddy/mcp@0.1.4") {
   fail("MCP package must be pinned to the reviewed version.");
 }
 
-if (codexMarketplace.plugins?.[0]?.source?.path !== "./plugins/prerenderbuddy") {
+if (codexMarketplace.plugins?.[0]?.name !== "prerender-buddy") fail("Codex marketplace plugin name is incorrect.");
+if (codexMarketplace.plugins?.[0]?.source?.path !== "./plugins/prerender-buddy") {
   fail("Codex marketplace source is incorrect.");
 }
-if (claudeMarketplace.plugins?.[0]?.source !== "./plugins/prerenderbuddy") {
+if (claudeMarketplace.plugins?.[0]?.name !== "prerender-buddy") fail("Claude marketplace plugin name is incorrect.");
+if (claudeMarketplace.plugins?.[0]?.source !== "./plugins/prerender-buddy") {
   fail("Claude marketplace source is incorrect.");
 }
 if (codexMarketplace.name !== "prerenderbuddy-local") fail("Unexpected Codex marketplace name.");
 if (claudeMarketplace.name !== "prerenderbuddy") fail("Unexpected Claude marketplace name.");
 if (!Array.isArray(evals.cases) || evals.cases.length < 6) fail("Evaluation coverage is incomplete.");
 
-await required("plugins/prerenderbuddy/skills/crawler-visibility-audit/SKILL.md");
+await required("plugins/prerender-buddy/skills/crawler-visibility-audit/SKILL.md");
 await required("LICENSE");
 await required("NOTICE");
 await required("SECURITY.md");

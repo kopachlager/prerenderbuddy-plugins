@@ -5,10 +5,10 @@
   },
   "plugins": [
     {
-      "name": "prerenderbuddy",
+      "name": "prerender-buddy",
       "source": {
         "source": "local",
-        "path": "./plugins/prerenderbuddy"
+        "path": "./plugins/prerender-buddy"
       },
       "policy": {
         "installation": "AVAILABLE",

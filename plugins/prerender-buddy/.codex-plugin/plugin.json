@@ -1,6 +1,6 @@
 {
-  "name": "prerenderbuddy",
-  "version": "0.1.0",
+  "name": "prerender-buddy",
+  "version": "0.1.0+codex.20260803093553",
   "description": "Audit crawler-visible HTML and discovery files with local Prerender Buddy MCP tools.",
   "author": {
     "name": "Prerender Buddy",

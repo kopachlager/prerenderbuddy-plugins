@@ -7,8 +7,8 @@
   "description": "Official Prerender Buddy tools for crawler visibility diagnostics.",
   "plugins": [
     {
-      "name": "prerenderbuddy",
-      "source": "./plugins/prerenderbuddy",
+      "name": "prerender-buddy",
+      "source": "./plugins/prerender-buddy",
       "description": "Audit crawler-visible HTML and discovery files with local Prerender Buddy MCP tools.",
       "version": "0.1.0"
     }
