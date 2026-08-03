@@ -1,0 +1,16 @@
+{
+  "name": "prerenderbuddy",
+  "owner": {
+    "name": "Prerender Buddy",
+    "url": "https://prerenderbuddy.com"
+  },
+  "description": "Official Prerender Buddy tools for crawler visibility diagnostics.",
+  "plugins": [
+    {
+      "name": "prerenderbuddy",
+      "source": "./plugins/prerenderbuddy",
+      "description": "Audit crawler-visible HTML and discovery files with local Prerender Buddy MCP tools.",
+      "version": "0.1.0"
+    }
+  ]
+}

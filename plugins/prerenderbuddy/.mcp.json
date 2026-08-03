@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "prerenderbuddy": {
+      "command": "npx",
+      "args": [
+        "--yes",
+        "@prerenderbuddy/mcp@0.1.4"
+      ]
+    }
+  }
+}

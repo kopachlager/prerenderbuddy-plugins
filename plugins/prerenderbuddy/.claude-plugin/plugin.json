@@ -1,0 +1,21 @@
+{
+  "name": "prerenderbuddy",
+  "version": "0.1.0",
+  "description": "Audit crawler-visible HTML and discovery files with local Prerender Buddy MCP tools.",
+  "author": {
+    "name": "Prerender Buddy",
+    "url": "https://prerenderbuddy.com"
+  },
+  "homepage": "https://prerenderbuddy.com/developer-tools",
+  "repository": "https://github.com/kopachlager/prerenderbuddy-plugins",
+  "license": "Apache-2.0",
+  "keywords": [
+    "crawler",
+    "seo",
+    "mcp",
+    "indexing",
+    "visibility"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json"
+}

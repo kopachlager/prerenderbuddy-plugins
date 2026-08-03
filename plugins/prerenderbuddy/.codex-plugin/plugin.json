@@ -1,0 +1,39 @@
+{
+  "name": "prerenderbuddy",
+  "version": "0.1.0",
+  "description": "Audit crawler-visible HTML and discovery files with local Prerender Buddy MCP tools.",
+  "author": {
+    "name": "Prerender Buddy",
+    "url": "https://prerenderbuddy.com"
+  },
+  "homepage": "https://prerenderbuddy.com/developer-tools",
+  "repository": "https://github.com/kopachlager/prerenderbuddy-plugins",
+  "license": "Apache-2.0",
+  "keywords": [
+    "crawler",
+    "seo",
+    "mcp",
+    "indexing",
+    "visibility"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Prerender Buddy",
+    "shortDescription": "Audit what crawlers can actually retrieve.",
+    "longDescription": "Check crawler-readable HTML, compare crawler and browser-style HTTP responses, and inspect discovery files from Codex.",
+    "developerName": "Prerender Buddy",
+    "category": "Productivity",
+    "capabilities": [
+      "Read"
+    ],
+    "websiteURL": "https://prerenderbuddy.com/developer-tools",
+    "privacyPolicyURL": "https://prerenderbuddy.com/privacy",
+    "termsOfServiceURL": "https://prerenderbuddy.com/terms",
+    "defaultPrompt": [
+      "Audit this public URL for crawler visibility and explain the evidence.",
+      "Compare how browser and crawler user agents retrieve this URL.",
+      "Check the discovery files for this site."
+    ]
+  },
+  "mcpServers": "./.mcp.json"
+}

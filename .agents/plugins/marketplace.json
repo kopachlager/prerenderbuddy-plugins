@@ -1,0 +1,20 @@
+{
+  "name": "prerenderbuddy-local",
+  "interface": {
+    "displayName": "Prerender Buddy (Local)"
+  },
+  "plugins": [
+    {
+      "name": "prerenderbuddy",
+      "source": {
+        "source": "local",
+        "path": "./plugins/prerenderbuddy"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}
