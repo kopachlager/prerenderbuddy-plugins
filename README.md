@@ -31,7 +31,7 @@ Codex's plugin validator and the shared skill validator are also run during rele
 claude plugin validate . --strict
 ```
 
-For Codex, add this repository as a local marketplace and install `prerender-buddy@prerenderbuddy-local`. For Claude Code, add this repository as a local marketplace and install `prerender-buddy@prerenderbuddy`.
+For Codex, add this repository as a local marketplace and install `prerenderbuddy@prerenderbuddy-local`. For Claude Code, add this repository as a local marketplace and install `prerenderbuddy@prerenderbuddy`.
 
 The repository is intentionally local-only while the alpha is reviewed. Public installation commands will be added when the GitHub repository is published.
 
