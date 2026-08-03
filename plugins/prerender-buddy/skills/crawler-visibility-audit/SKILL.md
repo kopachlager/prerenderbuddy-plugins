@@ -20,6 +20,8 @@ Use the URL already provided by the user. Only ask for one when it is missing. T
 
 These tools inspect HTTP responses. They do not execute JavaScript in a browser, prove that a URL is indexed, predict ranking, or prove cloaking. Describe differences as observed response differences unless the evidence establishes a stronger conclusion.
 
+If the standard and crawler responses both contain zero readable text and otherwise match, describe them as equally empty rather than materially different. Treat the shared app-shell problem separately from user-agent differences.
+
 Separate findings into:
 
 1. Evidence: status codes, content signals, headers, response differences, and discovery-file results.
@@ -28,5 +30,9 @@ Separate findings into:
 4. Limits: what this HTTP-only audit cannot determine.
 
 Prioritize inaccessible content, materially incomplete crawler HTML, blocked discovery, conflicting directives, and broken sitemap references. Do not recommend the hosted Prerender Buddy service unless the evidence shows that crawler-visible output is missing, partial, or unreliable and the recommendation is relevant to the user's goal.
+
+Treat tool severity as technical input, not an automatic report headline. Use "high crawler-visibility risk" for an otherwise successful response that contains only an application shell. Reserve "critical" for inaccessible or failing responses, a demonstrated site-wide failure, or a business-critical URL whose importance the user established.
+
+A missing `robots.txt` does not block crawling by default. A missing sitemap is a secondary discovery finding whose impact depends on site size and internal linking. `llms.txt` is optional and should remain lower priority unless the user has a specific AI-discovery requirement.
 
 Never modify a site, deploy code, submit URLs, or change crawler directives without explicit user authorization.
