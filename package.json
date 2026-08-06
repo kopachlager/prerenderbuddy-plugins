@@ -1,0 +1,13 @@
+{
+  "name": "prerenderbuddy-plugins",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Validation tooling for the Prerender Buddy agent plugin package.",
+  "type": "module",
+  "scripts": {
+    "test": "node scripts/validate.mjs"
+  },
+  "devDependencies": {
+    "ajv": "8.20.0"
+  }
+}

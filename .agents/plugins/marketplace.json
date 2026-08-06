@@ -1,7 +1,7 @@
 {
-  "name": "prerenderbuddy-local",
+  "name": "prerenderbuddy",
   "interface": {
-    "displayName": "Prerender Buddy (Local)"
+    "displayName": "Prerender Buddy"
   },
   "plugins": [
     {

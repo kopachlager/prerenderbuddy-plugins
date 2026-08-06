@@ -2,3 +2,7 @@ Prerender Buddy plugins
 Copyright 2026 Prerender Buddy
 
 Licensed under the Apache License, Version 2.0.
+
+This product includes Agent Plugins 1.0 JSON Schemas from
+https://github.com/agentplugins/agent-plugins-spec, licensed under the
+Apache License, Version 2.0.
