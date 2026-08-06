@@ -1,5 +1,8 @@
 # Prerender Buddy agent plugin
 
+[![Validate plugins](https://github.com/kopachlager/prerenderbuddy-plugins/actions/workflows/validate.yml/badge.svg)](https://github.com/kopachlager/prerenderbuddy-plugins/actions/workflows/validate.yml)
+[![Agent Plugins 1.0](https://img.shields.io/badge/Agent%20Plugins-1.0-111111)](https://agent-plugins.org/)
+
 Official Prerender Buddy plugin for AI coding agents. The package combines one Agent Skill with the local, open-source Prerender Buddy MCP server.
 
 It supports the open [Agent Plugins 1.0](https://agent-plugins.org/) package format while retaining native manifests for Codex and Claude Code. Portable clients discover `plugin.json`, `skills/`, and `mcp.json`; native hosts can continue using their own manifests without duplicating the audit workflow.
