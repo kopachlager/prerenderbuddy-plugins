@@ -5,7 +5,7 @@ This document separates implemented compatibility from external publication and 
 ## Implemented
 
 - Shared crawler-visibility Agent Skill.
-- Local `@prerenderbuddy/mcp@0.1.5` stdio server.
+- Local `@prerenderbuddy/mcp@0.1.6` stdio server.
 - Agent Plugins 1.0 root manifest and MCP configuration.
 - Native Codex and Claude Code manifests.
 - Codex and Claude marketplace descriptors.

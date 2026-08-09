@@ -55,7 +55,7 @@ const nativeServer = nativeMcp.mcpServers?.prerenderbuddy;
 const portableServer = portableMcp.mcpServers?.prerenderbuddy;
 for (const server of [nativeServer, portableServer]) {
   if (server?.command !== "npx") fail("MCP server must start through npx.");
-  if (server?.args?.join(" ") !== "--yes @prerenderbuddy/mcp@0.1.5") {
+  if (server?.args?.join(" ") !== "--yes @prerenderbuddy/mcp@0.1.6") {
     fail("MCP package must be pinned to the reviewed version.");
   }
 }
