@@ -5,6 +5,9 @@
       "args": [
         "--yes",
         "@prerenderbuddy/mcp@0.2.0"
+      ],
+      "env_vars": [
+        "PRERENDER_BUDDY_API_KEY"
       ]
     }
   }
