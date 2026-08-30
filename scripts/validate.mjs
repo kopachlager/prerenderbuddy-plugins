@@ -26,9 +26,9 @@ for (const manifest of [codex, claude]) {
   if (manifest.mcpServers !== "./.mcp.json") fail("Manifest must use the shared MCP config.");
   if (manifest.skills !== "./skills/") fail("Manifest must use the shared skills directory.");
 }
-if (!/^0\.2\.0(?:\+codex\.[0-9]+)?$/.test(codex.version)) fail("Unexpected Codex plugin version.");
-if (claude.version !== "0.2.0") fail("Unexpected Claude plugin version.");
-if (portable.version !== "0.2.0") fail("Unexpected portable plugin version.");
+if (!/^0\.2\.1(?:\+codex\.[0-9]+)?$/.test(codex.version)) fail("Unexpected Codex plugin version.");
+if (claude.version !== "0.2.1") fail("Unexpected Claude plugin version.");
+if (portable.version !== "0.2.1") fail("Unexpected portable plugin version.");
 
 const ajv = new Ajv2020({ allErrors: true, strict: true });
 const validatePortablePlugin = ajv.compile(portablePluginSchema);
@@ -63,6 +63,12 @@ for (const server of [nativeServer, portableServer]) {
 if (portableServer?.type !== "stdio") fail("Portable MCP transport must be explicit stdio.");
 if (JSON.stringify(portableServer.args) !== JSON.stringify(nativeServer.args)) {
   fail("Portable and native MCP arguments must match.");
+}
+if (portableServer.env?.PRERENDER_BUDDY_API_KEY !== "${PRERENDER_BUDDY_API_KEY}") {
+  fail("Portable MCP must declare the optional workspace API key reference.");
+}
+if (!nativeServer.env_vars?.includes("PRERENDER_BUDDY_API_KEY")) {
+  fail("Codex MCP overlay must forward the optional workspace API key.");
 }
 
 if (codexMarketplace.plugins?.[0]?.name !== "prerenderbuddy") fail("Codex marketplace plugin name is incorrect.");
