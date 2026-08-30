@@ -4,8 +4,9 @@ This document separates implemented compatibility from external publication and 
 
 ## Implemented
 
-- Shared crawler-visibility Agent Skill.
-- Local `@prerenderbuddy/mcp@0.1.6` stdio server.
+- Shared crawler-visibility and workspace-review Agent Skills.
+- Local `@prerenderbuddy/mcp@0.2.0` stdio server.
+- Optional read-only Pro workspace evidence through the scoped Developer API.
 - Agent Plugins 1.0 root manifest and MCP configuration.
 - Native Codex and Claude Code manifests.
 - Codex and Claude marketplace descriptors.
@@ -33,7 +34,7 @@ This document separates implemented compatibility from external publication and 
 - Verify the published Codex installation commands from a clean marketplace checkout.
 - Verify the VS Code marketplace flow and portable MCP startup.
 - Verify the documented Claude Code commands with its native CLI.
-- Tag the initial alpha release and attach a short compatibility matrix.
+- Tag the 0.2 workspace-evidence release and attach a short compatibility matrix.
 - Submit to relevant client directories separately; Agent Plugins conformance is not a registry submission.
 
 ## Release policy
