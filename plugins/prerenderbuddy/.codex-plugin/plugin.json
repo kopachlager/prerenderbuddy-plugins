@@ -1,7 +1,7 @@
 {
   "name": "prerenderbuddy",
-  "version": "0.1.0+codex.20260809135015",
-  "description": "Audit crawler-visible HTML and discovery files with local Prerender Buddy MCP tools.",
+  "version": "0.2.0+codex.20260830125605",
+  "description": "Audit public crawler visibility and optionally review authenticated Prerender Buddy workspace evidence.",
   "author": {
     "name": "Prerender Buddy",
     "url": "https://prerenderbuddy.com"
@@ -19,8 +19,8 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "Prerender Buddy",
-    "shortDescription": "Audit what crawlers can actually retrieve.",
-    "longDescription": "Check crawler-readable HTML, compare crawler and browser-style HTTP responses, and inspect discovery files from Codex.",
+    "shortDescription": "Audit crawler access and review PB evidence.",
+    "longDescription": "Check public crawler-readable HTML without an account, or use an optional Pro API key to review workspace health, crawler activity, AI visibility, recommendations, and content status.",
     "developerName": "Prerender Buddy",
     "category": "Productivity",
     "capabilities": [
@@ -32,7 +32,8 @@
     "defaultPrompt": [
       "Audit this public URL for crawler visibility and explain the evidence.",
       "Compare how browser and crawler user agents retrieve this URL.",
-      "Check the discovery files for this site."
+      "Check the discovery files for this site.",
+      "Review health and AI visibility for one of my Prerender Buddy sites."
     ]
   },
   "mcpServers": "./.mcp.json"

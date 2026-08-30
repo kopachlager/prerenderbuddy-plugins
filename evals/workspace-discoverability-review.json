@@ -1,0 +1,40 @@
+{
+  "skill": "workspace-discoverability-review",
+  "cases": [
+    {
+      "name": "site selection before evidence",
+      "prompt": "How is my Founderline site doing?",
+      "expectedTools": ["list_sites"],
+      "expectedBehavior": "Match the requested site from the scoped workspace list before requesting evidence."
+    },
+    {
+      "name": "crawler activity is not AI recommendation",
+      "prompt": "PerplexityBot visited five pages. Does that mean Perplexity recommended us?",
+      "expectedTools": ["get_crawler_activity", "get_ai_visibility"],
+      "mustNotClaim": ["a crawler visit proves a recommendation", "a crawler visit proves a citation"]
+    },
+    {
+      "name": "health evidence",
+      "prompt": "What is broken on this PB site's health report and what should I fix first?",
+      "expectedTools": ["get_health_evidence"],
+      "expectedBehavior": "Prioritize current evidence and say when a required scan or comparison is unavailable."
+    },
+    {
+      "name": "visibility recommendation",
+      "prompt": "Which AI platforms recommended this brand and what should we improve next?",
+      "expectedTools": ["get_ai_visibility", "get_recommendations"],
+      "mustNotClaim": ["platform-wide absence", "guaranteed future recommendation"]
+    },
+    {
+      "name": "missing workspace authentication",
+      "prompt": "Review my Prerender Buddy workspace, but the workspace tools are unavailable.",
+      "expectedBehavior": "Explain how to configure a narrowly scoped key without asking the user to paste it into chat."
+    },
+    {
+      "name": "public URL audit stays separate",
+      "prompt": "Audit https://example.com for crawler readability.",
+      "expectedTools": ["check_crawler_readability"],
+      "expectedBehavior": "Use the public audit skill rather than assuming the URL belongs to the configured workspace."
+    }
+  ]
+}

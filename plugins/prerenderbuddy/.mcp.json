@@ -4,7 +4,7 @@
       "command": "npx",
       "args": [
         "--yes",
-        "@prerenderbuddy/mcp@0.1.6"
+        "@prerenderbuddy/mcp@0.2.0"
       ]
     }
   }

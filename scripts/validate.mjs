@@ -19,15 +19,16 @@ const portableMcpSchema = await readJson("schemas/agent-plugins/1.0.0/mcp.schema
 const codexMarketplace = await readJson(".agents/plugins/marketplace.json");
 const claudeMarketplace = await readJson(".claude-plugin/marketplace.json");
 const evals = await readJson("evals/crawler-visibility-audit.json");
+const workspaceEvals = await readJson("evals/workspace-discoverability-review.json");
 
 for (const manifest of [codex, claude]) {
   if (manifest.name !== "prerenderbuddy") fail("Plugin names must match.");
   if (manifest.mcpServers !== "./.mcp.json") fail("Manifest must use the shared MCP config.");
   if (manifest.skills !== "./skills/") fail("Manifest must use the shared skills directory.");
 }
-if (!/^0\.1\.0(?:\+codex\.[0-9]+)?$/.test(codex.version)) fail("Unexpected Codex alpha version.");
-if (claude.version !== "0.1.0") fail("Unexpected Claude alpha version.");
-if (portable.version !== "0.1.0") fail("Unexpected portable plugin version.");
+if (!/^0\.2\.0(?:\+codex\.[0-9]+)?$/.test(codex.version)) fail("Unexpected Codex plugin version.");
+if (claude.version !== "0.2.0") fail("Unexpected Claude plugin version.");
+if (portable.version !== "0.2.0") fail("Unexpected portable plugin version.");
 
 const ajv = new Ajv2020({ allErrors: true, strict: true });
 const validatePortablePlugin = ajv.compile(portablePluginSchema);
@@ -55,7 +56,7 @@ const nativeServer = nativeMcp.mcpServers?.prerenderbuddy;
 const portableServer = portableMcp.mcpServers?.prerenderbuddy;
 for (const server of [nativeServer, portableServer]) {
   if (server?.command !== "npx") fail("MCP server must start through npx.");
-  if (server?.args?.join(" ") !== "--yes @prerenderbuddy/mcp@0.1.6") {
+  if (server?.args?.join(" ") !== "--yes @prerenderbuddy/mcp@0.2.0") {
     fail("MCP package must be pinned to the reviewed version.");
   }
 }
@@ -75,8 +76,10 @@ if (claudeMarketplace.plugins?.[0]?.source !== "./plugins/prerenderbuddy") {
 if (codexMarketplace.name !== "prerenderbuddy") fail("Unexpected Codex marketplace name.");
 if (claudeMarketplace.name !== "prerenderbuddy") fail("Unexpected Claude marketplace name.");
 if (!Array.isArray(evals.cases) || evals.cases.length < 6) fail("Evaluation coverage is incomplete.");
+if (!Array.isArray(workspaceEvals.cases) || workspaceEvals.cases.length < 6) fail("Workspace evaluation coverage is incomplete.");
 
 await required("plugins/prerenderbuddy/skills/crawler-visibility-audit/SKILL.md");
+await required("plugins/prerenderbuddy/skills/workspace-discoverability-review/SKILL.md");
 await required("plugins/prerenderbuddy/README.md");
 await required("plugins/prerenderbuddy/NOTICE");
 const repositoryLicense = await readFile(resolve(root, "LICENSE"), "utf8");
@@ -87,4 +90,4 @@ await required("NOTICE");
 await required("SECURITY.md");
 await required("CODE_OF_CONDUCT.md");
 
-console.log("Validated Agent Plugins 1.0 package, native host manifests, marketplaces, MCP parity, skill, and evals.");
+console.log("Validated Agent Plugins 1.0 package, native host manifests, marketplaces, MCP parity, skills, and evals.");

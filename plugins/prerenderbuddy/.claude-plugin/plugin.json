@@ -1,7 +1,7 @@
 {
   "name": "prerenderbuddy",
-  "version": "0.1.0",
-  "description": "Audit crawler-visible HTML and discovery files with local Prerender Buddy MCP tools.",
+  "version": "0.2.0",
+  "description": "Audit public crawler visibility and optionally review authenticated Prerender Buddy workspace evidence.",
   "author": {
     "name": "Prerender Buddy",
     "url": "https://prerenderbuddy.com"

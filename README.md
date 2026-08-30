@@ -5,18 +5,20 @@
 
 **Website:** [prerenderbuddy.com](https://prerenderbuddy.com/)
 
-Official Prerender Buddy plugin for AI coding agents. The package combines one Agent Skill with the local, open-source Prerender Buddy MCP server.
+Official Prerender Buddy plugin for AI coding agents. The package combines two focused Agent Skills with the local, open-source Prerender Buddy MCP server.
 
 It supports the open [Agent Plugins 1.0](https://agent-plugins.org/) package format while retaining native manifests for Codex and Claude Code. Portable clients discover `plugin.json`, `skills/`, and `mcp.json`; native hosts can continue using their own manifests without duplicating the audit workflow.
 
-The initial alpha can:
+Without an account it can:
 
 - inspect crawler-readable HTML and response signals;
 - compare normal and crawler-profile HTTP responses;
 - check `robots.txt`, `sitemap.xml`, and `llms.txt`;
 - turn evidence into prioritized recommendations without claiming to measure indexing or ranking.
 
-No Prerender Buddy account or API key is required. The plugin starts [`@prerenderbuddy/mcp`](https://www.npmjs.com/package/@prerenderbuddy/mcp) locally through `npx`; the MCP server makes outbound requests only to the public URLs the user asks it to inspect.
+No Prerender Buddy account or API key is required for those public audits. The plugin starts [`@prerenderbuddy/mcp`](https://www.npmjs.com/package/@prerenderbuddy/mcp) locally through `npx`.
+
+Pro users can optionally set `PRERENDER_BUDDY_API_KEY` in the agent host environment. After restart, the same local MCP server adds read-only tools for scoped workspace sites, health, crawler activity, AI visibility, recommendations, and content status. Never paste the key into chat or commit it to a repository.
 
 ## Requirements
 
@@ -84,7 +86,7 @@ Claude Code packaging is included but still awaits native CLI validation. Do not
 
 ## Privacy and safety
 
-The plugin has no credentials, hosted API dependency, analytics, or telemetry. Fetched pages are untrusted input. The MCP server blocks unsafe and private-network targets and limits response sizes and redirects.
+Public audit mode has no credentials, hosted API dependency, analytics, or telemetry. Optional workspace mode sends the configured key only to the documented Prerender Buddy Developer API and remains subject to API-side plan, scope, site-limit, and workspace checks. Fetched pages and saved/provider evidence are untrusted input.
 
 ## License
 
