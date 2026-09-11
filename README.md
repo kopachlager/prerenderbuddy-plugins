@@ -25,7 +25,7 @@ Pro users can optionally set `PRERENDER_BUDDY_API_KEY` in the agent host environ
 - Node.js 20 or newer
 - `npx`
 - A client that supports Agent Plugins, Agent Skills, or MCP
-- Codex and Claude Code are additionally supported through native manifests
+- Codex, Claude Code, and Grok Build are additionally supported through native manifests
 
 ## Package compatibility
 
@@ -34,6 +34,7 @@ Pro users can optionally set `PRERENDER_BUDDY_API_KEY` in the agent host environ
 | Agent Plugins 1.0 | `plugin.json`, `skills/`, `mcp.json` | Portable package included |
 | Codex and ChatGPT | `.codex-plugin/plugin.json`, `.mcp.json` | Local alpha tested in Codex |
 | Claude Code | `.claude-plugin/plugin.json`, `.mcp.json` | Packaged; native CLI validation pending |
+| Grok Build | `.grok-plugin/plugin.json`, `.mcp.json` | Native manifest included; Claude-compatible install also works |
 
 Agent Plugins standardizes package discovery, not marketplace publication. Availability in VS Code, Cursor, GitHub Copilot, Kiro, ChatGPT, Codex, or another compatible client still depends on that client's installation and distribution support.
 
@@ -83,6 +84,26 @@ Agent Plugins support is currently in preview. Add `kopachlager/prerenderbuddy-p
 ```
 
 Claude Code packaging is included but still awaits native CLI validation. Do not interpret portable packaging as automatic listing in any client marketplace.
+
+### Grok Build
+
+Grok Build reads the Claude-compatible plugin and the native `.grok-plugin` manifest.
+
+```sh
+grok plugin marketplace add kopachlager/prerenderbuddy-plugins
+grok plugin install prerenderbuddy --trust
+```
+
+Or add the local MCP server without the plugin package:
+
+```sh
+grok mcp add prerenderbuddy -- npx --yes @prerenderbuddy/mcp@0.2.0
+```
+
+### Grok Bot
+
+Grok on grok.com, iOS, and Android does not run local `npx` plugins. Add a custom MCP connector at [grok.com/connectors](https://grok.com/connectors) pointing at a public HTTPS Streamable HTTP URL from `@prerenderbuddy/mcp@0.2.1 --http`. See the [MCP README](https://github.com/kopachlager/prerenderbuddy-mcp#streamable-http--grok-bot).
+
 
 ## Privacy and safety
 

@@ -8,8 +8,8 @@ This document separates implemented compatibility from external publication and 
 - Local `@prerenderbuddy/mcp@0.2.0` stdio server.
 - Optional read-only Pro workspace evidence through the scoped Developer API.
 - Agent Plugins 1.0 root manifest and MCP configuration.
-- Native Codex and Claude Code manifests.
-- Codex and Claude marketplace descriptors.
+- Native Codex, Claude Code, and Grok Build manifests.
+- Codex, Claude, and Grok marketplace descriptors.
 - Portable/native manifest parity validation.
 - Vendored Agent Plugins 1.0 schemas with automated JSON Schema validation.
 - Node.js 20, 22 and 24 CI matrix.
@@ -24,6 +24,7 @@ This document separates implemented compatibility from external publication and 
 - Codex plugin validation passes.
 - Local Codex installation and cache refresh pass.
 - MCP initialization and required tool discovery pass.
+- Grok Build plugin validation passes for the native package.
 - Dependency audit reports no known vulnerabilities.
 
 ## External gates before public release
