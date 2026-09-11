@@ -11,6 +11,7 @@ const fail = (message) => {
 
 const codex = await readJson("plugins/prerenderbuddy/.codex-plugin/plugin.json");
 const claude = await readJson("plugins/prerenderbuddy/.claude-plugin/plugin.json");
+const grok = await readJson("plugins/prerenderbuddy/.grok-plugin/plugin.json");
 const portable = await readJson("plugins/prerenderbuddy/plugin.json");
 const portableMcp = await readJson("plugins/prerenderbuddy/mcp.json");
 const nativeMcp = await readJson("plugins/prerenderbuddy/.mcp.json");
@@ -18,16 +19,18 @@ const portablePluginSchema = await readJson("schemas/agent-plugins/1.0.0/plugin.
 const portableMcpSchema = await readJson("schemas/agent-plugins/1.0.0/mcp.schema.json");
 const codexMarketplace = await readJson(".agents/plugins/marketplace.json");
 const claudeMarketplace = await readJson(".claude-plugin/marketplace.json");
+const grokMarketplace = await readJson(".grok-plugin/marketplace.json");
 const evals = await readJson("evals/crawler-visibility-audit.json");
 const workspaceEvals = await readJson("evals/workspace-discoverability-review.json");
 
-for (const manifest of [codex, claude]) {
+for (const manifest of [codex, claude, grok]) {
   if (manifest.name !== "prerenderbuddy") fail("Plugin names must match.");
   if (manifest.mcpServers !== "./.mcp.json") fail("Manifest must use the shared MCP config.");
   if (manifest.skills !== "./skills/") fail("Manifest must use the shared skills directory.");
 }
 if (!/^0\.2\.1(?:\+codex\.[0-9]+)?$/.test(codex.version)) fail("Unexpected Codex plugin version.");
 if (claude.version !== "0.2.1") fail("Unexpected Claude plugin version.");
+if (grok.version !== "0.2.1") fail("Unexpected Grok plugin version.");
 if (portable.version !== "0.2.1") fail("Unexpected portable plugin version.");
 
 const ajv = new Ajv2020({ allErrors: true, strict: true });
@@ -79,6 +82,12 @@ if (claudeMarketplace.plugins?.[0]?.name !== "prerenderbuddy") fail("Claude mark
 if (claudeMarketplace.plugins?.[0]?.source !== "./plugins/prerenderbuddy") {
   fail("Claude marketplace source is incorrect.");
 }
+if (grokMarketplace.plugins?.[0]?.name !== "prerenderbuddy") fail("Grok marketplace plugin name is incorrect.");
+if (grokMarketplace.plugins?.[0]?.source !== "./plugins/prerenderbuddy") {
+  fail("Grok marketplace source is incorrect.");
+}
+if (grokMarketplace.name !== "prerenderbuddy") fail("Unexpected Grok marketplace name.");
+if (JSON.stringify(grok) !== JSON.stringify(claude)) fail("Grok and Claude plugin manifests must match.");
 if (codexMarketplace.name !== "prerenderbuddy") fail("Unexpected Codex marketplace name.");
 if (claudeMarketplace.name !== "prerenderbuddy") fail("Unexpected Claude marketplace name.");
 if (!Array.isArray(evals.cases) || evals.cases.length < 6) fail("Evaluation coverage is incomplete.");
