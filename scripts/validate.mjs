@@ -28,10 +28,10 @@ for (const manifest of [codex, claude, grok]) {
   if (manifest.mcpServers !== "./.mcp.json") fail("Manifest must use the shared MCP config.");
   if (manifest.skills !== "./skills/") fail("Manifest must use the shared skills directory.");
 }
-if (!/^0\.2\.2(?:\+codex\.[0-9]+)?$/.test(codex.version)) fail("Unexpected Codex plugin version.");
-if (claude.version !== "0.2.2") fail("Unexpected Claude plugin version.");
-if (grok.version !== "0.2.2") fail("Unexpected Grok plugin version.");
-if (portable.version !== "0.2.2") fail("Unexpected portable plugin version.");
+if (!/^0\.2\.3(?:\+codex\.[0-9]+)?$/.test(codex.version)) fail("Unexpected Codex plugin version.");
+if (claude.version !== "0.2.3") fail("Unexpected Claude plugin version.");
+if (grok.version !== "0.2.3") fail("Unexpected Grok plugin version.");
+if (portable.version !== "0.2.3") fail("Unexpected portable plugin version.");
 
 const ajv = new Ajv2020({ allErrors: true, strict: true });
 const validatePortablePlugin = ajv.compile(portablePluginSchema);
@@ -59,7 +59,7 @@ const nativeServer = nativeMcp.mcpServers?.prerenderbuddy;
 const portableServer = portableMcp.mcpServers?.prerenderbuddy;
 for (const server of [nativeServer, portableServer]) {
   if (server?.command !== "npx") fail("MCP server must start through npx.");
-  if (server?.args?.join(" ") !== "--yes @prerenderbuddy/mcp@0.2.2") {
+  if (server?.args?.join(" ") !== "--yes @prerenderbuddy/mcp@0.2.3") {
     fail("MCP package must be pinned to the reviewed version.");
   }
 }
