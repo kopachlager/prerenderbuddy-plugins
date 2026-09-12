@@ -5,7 +5,7 @@ This document separates implemented compatibility from external publication and 
 ## Implemented
 
 - Shared crawler-visibility and workspace-review Agent Skills.
-- Local `@prerenderbuddy/mcp@0.2.0` stdio server.
+- Local `@prerenderbuddy/mcp@0.2.2` stdio server.
 - Optional read-only Pro workspace evidence through the scoped Developer API.
 - Agent Plugins 1.0 root manifest and MCP configuration.
 - Native Codex, Claude Code, and Grok Build manifests.
