@@ -1,6 +1,6 @@
 {
   "name": "prerenderbuddy",
-  "version": "0.2.2+codex.20260912065644",
+  "version": "0.2.3+codex.20260912071511",
   "description": "Audit public crawler visibility and optionally review authenticated Prerender Buddy workspace evidence.",
   "author": {
     "name": "Prerender Buddy",
