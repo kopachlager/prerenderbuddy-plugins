@@ -4,12 +4,12 @@
     "name": "Prerender Buddy",
     "url": "https://prerenderbuddy.com"
   },
-  "description": "Official Prerender Buddy tools for public crawler diagnostics and optional workspace evidence.",
+  "description": "Official developer tools for the Prerender Buddy AI visibility and crawler-readiness platform.",
   "plugins": [
     {
       "name": "prerenderbuddy",
       "source": "./plugins/prerenderbuddy",
-      "description": "Audit crawler visibility and optionally review authenticated Prerender Buddy workspace evidence.",
+      "description": "Connect AI coding agents to crawler audits and optional Prerender Buddy workspace evidence.",
       "version": "0.2.3"
     }
   ]

@@ -1,7 +1,7 @@
 {
   "name": "prerenderbuddy",
-  "version": "0.2.3+codex.20260912071511",
-  "description": "Audit public crawler visibility and optionally review authenticated Prerender Buddy workspace evidence.",
+  "version": "0.2.3+codex.20260914174710",
+  "description": "Developer companion to the Prerender Buddy platform for crawler audits and optional workspace evidence.",
   "author": {
     "name": "Prerender Buddy",
     "url": "https://prerenderbuddy.com"
@@ -19,8 +19,8 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "Prerender Buddy",
-    "shortDescription": "Audit crawler access and review PB evidence.",
-    "longDescription": "Check public crawler-readable HTML without an account, or use an optional Pro API key to review workspace health, crawler activity, AI visibility, recommendations, and content status.",
+    "shortDescription": "Review crawler access and Prerender Buddy evidence.",
+    "longDescription": "Use the developer companion to the Prerender Buddy AI visibility and crawler-readiness platform. Audit public crawler-readable HTML without an account, or connect an optional Pro API key to review workspace health, crawler activity, AI visibility, recommendations, and content status.",
     "developerName": "Prerender Buddy",
     "category": "Productivity",
     "capabilities": [
@@ -31,8 +31,7 @@
     "termsOfServiceURL": "https://prerenderbuddy.com/terms",
     "defaultPrompt": [
       "Audit this public URL for crawler visibility and explain the evidence.",
-      "Compare how browser and crawler user agents retrieve this URL.",
-      "Check the discovery files for this site.",
+      "Compare browser and crawler responses, then check this site's discovery files.",
       "Review health and AI visibility for one of my Prerender Buddy sites."
     ]
   },

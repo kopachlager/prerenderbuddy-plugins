@@ -1,6 +1,6 @@
 # Prerender Buddy
 
-Audit what public search and AI crawlers can retrieve, and optionally review evidence from a Prerender Buddy workspace.
+Developer companion to the Prerender Buddy AI visibility and crawler-readiness platform. Audit what public search and AI crawlers can retrieve, and optionally review evidence from a Prerender Buddy workspace.
 
 This package contains:
 

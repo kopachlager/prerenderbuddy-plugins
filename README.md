@@ -5,7 +5,7 @@
 
 **Website:** [prerenderbuddy.com](https://prerenderbuddy.com/)
 
-Official Prerender Buddy plugin for AI coding agents. The package combines two focused Agent Skills with the local, open-source Prerender Buddy MCP server.
+Official developer companion for the Prerender Buddy AI visibility and crawler-readiness platform. The package combines two focused Agent Skills with the local, open-source Prerender Buddy MCP server.
 
 It supports the open [Agent Plugins 1.0](https://agent-plugins.org/) package format while retaining native manifests for Codex and Claude Code. Portable clients discover `plugin.json`, `skills/`, and `mcp.json`; native hosts can continue using their own manifests without duplicating the audit workflow.
 
