@@ -4,7 +4,7 @@
       "command": "npx",
       "args": [
         "--yes",
-        "@prerenderbuddy/mcp@0.2.3"
+        "@prerenderbuddy/mcp@0.2.4"
       ],
       "env_vars": [
         "PRERENDER_BUDDY_API_KEY"

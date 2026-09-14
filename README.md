@@ -97,12 +97,12 @@ grok plugin install prerenderbuddy --trust
 Or add the local MCP server without the plugin package:
 
 ```sh
-grok mcp add prerenderbuddy -- npx --yes @prerenderbuddy/mcp@0.2.3
+grok mcp add prerenderbuddy -- npx --yes @prerenderbuddy/mcp@0.2.4
 ```
 
 ### Grok Bot
 
-Grok on grok.com, iOS, and Android does not run local `npx` plugins. Add a custom MCP connector at [grok.com/connectors](https://grok.com/connectors) pointing at a public HTTPS Streamable HTTP URL from `@prerenderbuddy/mcp@0.2.3 --http`. See the [MCP README](https://github.com/kopachlager/prerenderbuddy-mcp#streamable-http--grok-bot).
+Grok on grok.com, iOS, and Android does not run local `npx` plugins. Add a custom MCP connector at [grok.com/connectors](https://grok.com/connectors) pointing at a public HTTPS Streamable HTTP URL from `@prerenderbuddy/mcp@0.2.4 --http`. See the [MCP README](https://github.com/kopachlager/prerenderbuddy-mcp#streamable-http--grok-bot).
 
 
 ## Privacy and safety

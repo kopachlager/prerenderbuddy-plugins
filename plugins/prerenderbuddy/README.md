@@ -9,7 +9,7 @@ This package contains:
 - a local Prerender Buddy MCP server configuration;
 - native compatibility manifests for Codex, Claude Code, and Grok Build.
 
-The MCP server runs through `npx --yes @prerenderbuddy/mcp@0.2.3`. It requires Node.js 20 or newer. Its three public audit tools need no account, API key, analytics, or telemetry. When `PRERENDER_BUDDY_API_KEY` is available to the MCP process, it also registers read-only workspace tools backed by the scoped Pro Developer API. Restart the agent host after adding or changing the key.
+The MCP server runs through `npx --yes @prerenderbuddy/mcp@0.2.4`. It requires Node.js 20 or newer. Its three public audit tools need no account, API key, analytics, or telemetry. When `PRERENDER_BUDDY_API_KEY` is available to the MCP process, it also registers read-only workspace tools backed by the scoped Pro Developer API. Restart the agent host after adding or changing the key.
 
 Never paste the API key into a chat or commit it to a repository. Create a narrowly scoped key in Prerender Buddy and expose it to the local MCP process through the host environment.
 
