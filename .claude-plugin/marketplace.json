@@ -10,7 +10,7 @@
       "name": "prerenderbuddy",
       "source": "./plugins/prerenderbuddy",
       "description": "Connect AI coding agents to crawler audits and optional Prerender Buddy workspace evidence.",
-      "version": "0.2.4"
+      "version": "0.2.5"
     }
   ]
 }

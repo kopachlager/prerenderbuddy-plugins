@@ -1,6 +1,6 @@
 {
   "name": "prerenderbuddy",
-  "version": "0.2.4+codex.20260914180513",
+  "version": "0.2.5+codex.20260915145200",
   "description": "Developer companion to the Prerender Buddy platform for crawler audits and optional workspace evidence.",
   "author": {
     "name": "Prerender Buddy",
