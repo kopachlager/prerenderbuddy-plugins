@@ -1,5 +1,5 @@
 import { access, readFile } from "node:fs/promises";
-import { resolve } from "node:path";
+import { resolve, relative, isAbsolute } from "node:path";
 import Ajv2020 from "ajv/dist/2020.js";
 
 const root = resolve(import.meta.dirname, "..");
@@ -22,6 +22,9 @@ const claudeMarketplace = await readJson(".claude-plugin/marketplace.json");
 const grokMarketplace = await readJson(".grok-plugin/marketplace.json");
 const evals = await readJson("evals/crawler-visibility-audit.json");
 const workspaceEvals = await readJson("evals/workspace-discoverability-review.json");
+const cursor = await readJson("plugins/prerenderbuddy/.cursor-plugin/plugin.json");
+const cursorMcp = await readJson("plugins/prerenderbuddy/mcp.cursor.json");
+const cursorMarketplace = await readJson(".cursor-plugin/marketplace.json");
 
 for (const manifest of [codex, claude, grok]) {
   if (manifest.name !== "prerenderbuddy") fail("Plugin names must match.");
@@ -32,6 +35,36 @@ if (!/^0\.2\.5(?:\+codex\.[0-9]+)?$/.test(codex.version)) fail("Unexpected Codex
 if (claude.version !== "0.2.5") fail("Unexpected Claude plugin version.");
 if (grok.version !== "0.2.5") fail("Unexpected Grok plugin version.");
 if (portable.version !== "0.2.5") fail("Unexpected portable plugin version.");
+if (cursor.name !== portable.name || cursor.version !== portable.version) fail("Cursor plugin identity must match the reviewed package.");
+
+const pluginRoot = resolve(root, "plugins/prerenderbuddy");
+for (const field of ["logo", "skills", "mcpServers"]) {
+  const path = cursor[field];
+  if (typeof path !== "string" || isAbsolute(path)) fail(`Cursor ${field} must be a relative path.`);
+  const resolvedPath = resolve(pluginRoot, path);
+  if (relative(pluginRoot, resolvedPath).startsWith("..")) fail(`Cursor ${field} must stay inside the plugin.`);
+  await access(resolvedPath);
+}
+if (cursor.skills !== "./skills/" || cursor.mcpServers !== "./mcp.cursor.json") fail("Cursor must use the shared skills and its own MCP configuration.");
+if (cursorMarketplace.name !== "prerenderbuddy" || cursorMarketplace.plugins?.length !== 1
+    || cursorMarketplace.plugins[0].name !== cursor.name
+    || cursorMarketplace.plugins[0].source !== "./plugins/prerenderbuddy") {
+  fail("Cursor marketplace must resolve the Prerender Buddy package.");
+}
+const cursorServer = cursorMcp.mcpServers?.prerenderbuddy;
+if (cursorServer?.type !== "stdio" || cursorServer.command !== "node"
+    || cursorServer.args?.length !== 1
+    || cursorServer.args[0] !== "${CURSOR_PLUGIN_ROOT}/scripts/start-cursor-mcp.mjs") {
+  fail("Cursor MCP must launch the bundled stdio entry point.");
+}
+if (cursorServer.env?.PB_CURSOR_API_KEY !== "${PRERENDER_BUDDY_API_KEY}") fail("Cursor must reference the optional key without storing a value.");
+if (cursor.variables?.type !== "object" || cursor.variables.properties?.PRERENDER_BUDDY_API_KEY?.default !== ""
+    || cursor.variables.required?.includes("PRERENDER_BUDDY_API_KEY")) {
+  fail("Public Cursor audits must not require workspace credentials.");
+}
+await required("plugins/prerenderbuddy/scripts/start-cursor-mcp.mjs");
+const launcher = await readFile(resolve(pluginRoot, "scripts/start-cursor-mcp.mjs"), "utf8");
+if (!launcher.includes(`@prerenderbuddy/mcp@${portable.version}`)) fail("Cursor launcher must use the reviewed MCP package version.");
 
 const ajv = new Ajv2020({ allErrors: true, strict: true });
 const validatePortablePlugin = ajv.compile(portablePluginSchema);
@@ -105,4 +138,4 @@ await required("NOTICE");
 await required("SECURITY.md");
 await required("CODE_OF_CONDUCT.md");
 
-console.log("Validated Agent Plugins 1.0 package, native host manifests, marketplaces, MCP parity, skills, and evals.");
+console.log("Validated Agent Plugins 1.0 package, Cursor/native host manifests, marketplaces, MCP parity, skills, and evals.");

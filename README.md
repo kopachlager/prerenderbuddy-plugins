@@ -7,7 +7,7 @@
 
 Official developer companion for the Prerender Buddy AI visibility and crawler-readiness platform. The package combines two focused Agent Skills with the local, open-source Prerender Buddy MCP server.
 
-It supports the open [Agent Plugins 1.0](https://agent-plugins.org/) package format while retaining native manifests for Codex and Claude Code. Portable clients discover `plugin.json`, `skills/`, and `mcp.json`; native hosts can continue using their own manifests without duplicating the audit workflow.
+It supports the open [Agent Plugins 1.0](https://agent-plugins.org/) package format while retaining native manifests for Cursor, Codex, Claude Code and Grok Build. Portable clients discover `plugin.json`, `skills/`, and `mcp.json`; native hosts can use their own manifests with the shared audit skills.
 
 Without an account it can:
 
@@ -18,20 +18,21 @@ Without an account it can:
 
 No Prerender Buddy account or API key is required for those public audits. The plugin starts [`@prerenderbuddy/mcp`](https://www.npmjs.com/package/@prerenderbuddy/mcp) locally through `npx`.
 
-Pro users can optionally set `PRERENDER_BUDDY_API_KEY` in the agent host environment. After restart, the same local MCP server adds read-only tools for scoped workspace sites, health, crawler activity, AI visibility, recommendations, and content status. Never paste the key into chat or commit it to a repository.
+Starter, Growth and Pro users can optionally set `PRERENDER_BUDDY_API_KEY` in the agent host environment. After restart, the same local MCP server adds read-only tools for scoped workspace sites, health, crawler activity, AI visibility, recommendations and content status. Cursor also supports the optional plugin configuration variable. Never paste the key into chat or commit it to a repository.
 
 ## Requirements
 
 - Node.js 20 or newer
 - `npx`
 - A client that supports Agent Plugins, Agent Skills, or MCP
-- Codex, Claude Code, and Grok Build are additionally supported through native manifests
+- Cursor, Codex, Claude Code and Grok Build have native manifests
 
 ## Package compatibility
 
 | Surface | Package path | Status |
 | --- | --- | --- |
 | Agent Plugins 1.0 | `plugin.json`, `skills/`, `mcp.json` | Portable package included |
+| Cursor | `.cursor-plugin/plugin.json`, `mcp.cursor.json` | Native package included; see [Cursor setup](docs/cursor-setup.md) and [release readiness](docs/release-readiness.md) |
 | Codex and ChatGPT | `.codex-plugin/plugin.json`, `.mcp.json` | Local alpha tested in Codex |
 | Claude Code | `.claude-plugin/plugin.json`, `.mcp.json` | Packaged; native CLI validation pending |
 | Grok Build | `.grok-plugin/plugin.json`, `.mcp.json` | Native manifest included; Claude-compatible install also works |
@@ -62,6 +63,16 @@ For Codex, add this repository as a local marketplace and install `prerenderbudd
 After installing or updating the plugin, fully quit and reopen the host application before testing. A new conversation reloads skill instructions, but an already-running MCP child process can continue using the previous package version until the host restarts.
 
 ## Install from GitHub
+
+### Cursor
+
+See [Cursor setup](docs/cursor-setup.md) for installation, public audits, optional workspace credentials and troubleshooting. This repository includes a Cursor marketplace descriptor pointing to `plugins/prerenderbuddy`. The official directory listing requires a separate Cursor review.
+
+To load the package for a CLI session:
+
+```sh
+cursor-agent --plugin-dir /absolute/path/to/prerenderbuddy-plugins/plugins/prerenderbuddy
+```
 
 ### Codex
 
