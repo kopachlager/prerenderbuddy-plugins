@@ -22,6 +22,8 @@ Cursor Agent CLI also supports loading a plugin for a single run:
 cursor-agent --plugin-dir /absolute/path/to/prerenderbuddy-plugins/plugins/prerenderbuddy
 ```
 
+Cursor may request approval for an individual MCP tool even after the server is approved. For headless CLI runs, configure only the needed `Mcp(server:tool)` permissions in the test project's `.cursor/cli.json`; `--approve-mcps` handles server startup rather than every tool call. The plugin does not change your global permission settings. [Cursor CLI permissions](https://cursor.com/docs/cli/reference/permissions).
+
 ## Public audits
 
 Allow the local MCP server to start when Cursor asks. `npx` downloads the pinned public package if it is not already cached.

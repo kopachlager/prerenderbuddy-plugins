@@ -58,4 +58,11 @@ Verification completed:
 - The logo has an alpha channel and was visually checked.
 - Updated the existing validator's `fast-uri` dependency within its allowed 3.x range; npm reported zero vulnerabilities after the update.
 
-Still required before claiming a verified Cursor marketplace release: load the package with an authenticated Cursor Agent/IDE session, confirm both skills and its plugin MCP configuration are discovered together, and run a representative public audit through that session. The installed CLI was signed out; a one-time browser sign-in was started. IDE installation UI and other operating systems have not been verified. Public submission and manual approval remain separate, unconfirmed steps.
+The one-time Cursor CLI sign-in completed on October 6. Two authenticated Cursor Agent sessions loaded the native package through `--plugin-dir` in disposable workspaces without project MCP configuration:
+
+- Public mode discovered both skills and the three plugin MCP tools. Cursor read the public audit skill and called `check_crawler_readability` against `https://prerenderbuddy.com` with the Googlebot profile. The call returned HTTP 200. Its 10,000-character sample was truncated, and the agent correctly limited its findings rather than declaring the whole page missing content/headings.
+- Workspace mode discovered all ten tools, read the workspace skill and successfully called `list_sites`, returning the single sample website. The review key was passed privately through the host environment, never in the prompt or repository.
+
+The first public call stopped at Cursor's individual-tool approval gate. The successful tests used project-level permissions allowing only the relevant PB tool, with shell and file writes denied. `--approve-mcps` alone does not approve every tool call; setup documentation now explains this. This was a host permission requirement, not a plugin failure.
+
+Combined plugin/skill/MCP operation is verified in Cursor Agent CLI. The desktop installation UI and other operating systems remain unverified. Public submission and manual marketplace approval are separate, unconfirmed steps.
