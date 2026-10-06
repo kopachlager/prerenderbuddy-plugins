@@ -1,0 +1,17 @@
+{
+  "name": "prerenderbuddy",
+  "owner": {
+    "name": "Prerender Buddy",
+    "email": "support@prerenderbuddy.com"
+  },
+  "metadata": {
+    "description": "Prerender Buddy tools for crawler audits, SEO and AI visibility evidence."
+  },
+  "plugins": [
+    {
+      "name": "prerenderbuddy",
+      "source": "./plugins/prerenderbuddy",
+      "description": "Audit crawler readability and discovery files, and review your Prerender Buddy workspace evidence."
+    }
+  ]
+}

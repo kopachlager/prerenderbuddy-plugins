@@ -34,3 +34,8 @@ jobs:
 
       - name: Validate shared plugin files
         run: npm test
+
+      - name: Validate Cursor package with the official template validator
+        run: |
+          curl -fsSL https://raw.githubusercontent.com/cursor/plugin-template/46216072ac5750f782f95bb325b4d12b7c3ae9c9/scripts/validate-template.mjs --output "${RUNNER_TEMP}/cursor-validate-template.mjs"
+          node "${RUNNER_TEMP}/cursor-validate-template.mjs"

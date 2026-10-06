@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "prerenderbuddy": {
+      "type": "stdio",
+      "command": "node",
+      "args": ["${CURSOR_PLUGIN_ROOT}/scripts/start-cursor-mcp.mjs"],
+      "env": {
+        "PB_CURSOR_API_KEY": "${PRERENDER_BUDDY_API_KEY}"
+      }
+    }
+  }
+}

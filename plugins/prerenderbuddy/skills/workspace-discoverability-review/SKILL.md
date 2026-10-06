@@ -7,7 +7,7 @@ description: Review an authenticated Prerender Buddy workspace site's setup, hea
 
 Use the authenticated Prerender Buddy MCP tools to answer questions about sites in the configured API key workspace. Workspace tools appear only when `PRERENDER_BUDDY_API_KEY` was available to the MCP process at startup.
 
-If the tools are unavailable, explain that the user should create a narrowly scoped Pro API key in Prerender Buddy, configure it as an environment variable for the MCP process, and restart the agent host. Never ask the user to paste the secret into chat or place it in a repository file.
+If the tools are unavailable, explain that the user should create a narrowly scoped Developer API key in Prerender Buddy's account menu (Starter, Growth or Pro), configure it for the MCP process, and restart the agent host. Cursor supports an optional plugin key setting or the host environment; other hosts should use their documented secret configuration. For website selection use `sites`; add `health`, `activity`, `visibility` and `content` for the corresponding evidence. Never ask the user to paste the secret into chat or place it in a repository file.
 
 ## Select the site deliberately
 

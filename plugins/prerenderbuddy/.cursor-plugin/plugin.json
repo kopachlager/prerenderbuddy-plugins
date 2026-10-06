@@ -1,0 +1,28 @@
+{
+  "name": "prerenderbuddy",
+  "displayName": "Prerender Buddy",
+  "version": "0.2.5",
+  "description": "Check crawler readability, robots.txt, sitemaps and llms.txt, and review Prerender Buddy AI visibility and citation evidence.",
+  "author": {
+    "name": "Prerender Buddy",
+    "email": "support@prerenderbuddy.com"
+  },
+  "homepage": "https://prerenderbuddy.com/developer-tools",
+  "repository": "https://github.com/kopachlager/prerenderbuddy-plugins",
+  "license": "Apache-2.0",
+  "keywords": ["seo", "aeo", "geo", "ai-visibility", "citations", "crawler", "robots", "sitemap", "llms", "mcp"],
+  "logo": "assets/prerenderbuddy-blue-transparent.png",
+  "skills": "./skills/",
+  "mcpServers": "./mcp.cursor.json",
+  "variables": {
+    "type": "object",
+    "properties": {
+      "PRERENDER_BUDDY_API_KEY": {
+        "type": "string",
+        "title": "Prerender Buddy API key",
+        "description": "Optional scoped Developer API key for workspace evidence. Leave empty for public audits without an account.",
+        "default": ""
+      }
+    }
+  }
+}
