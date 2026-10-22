@@ -31,10 +31,10 @@ for (const manifest of [codex, claude, grok]) {
   if (manifest.mcpServers !== "./.mcp.json") fail("Manifest must use the shared MCP config.");
   if (manifest.skills !== "./skills/") fail("Manifest must use the shared skills directory.");
 }
-if (!/^0\.2\.5(?:\+codex\.[0-9]+)?$/.test(codex.version)) fail("Unexpected Codex plugin version.");
-if (claude.version !== "0.2.5") fail("Unexpected Claude plugin version.");
-if (grok.version !== "0.2.5") fail("Unexpected Grok plugin version.");
-if (portable.version !== "0.2.5") fail("Unexpected portable plugin version.");
+if (!/^0\.2\.6(?:\+codex\.[0-9]+)?$/.test(codex.version)) fail("Unexpected Codex plugin version.");
+if (claude.version !== "0.2.6") fail("Unexpected Claude plugin version.");
+if (grok.version !== "0.2.6") fail("Unexpected Grok plugin version.");
+if (portable.version !== "0.2.6") fail("Unexpected portable plugin version.");
 if (cursor.name !== portable.name || cursor.version !== portable.version) fail("Cursor plugin identity must match the reviewed package.");
 
 const pluginRoot = resolve(root, "plugins/prerenderbuddy");
@@ -92,7 +92,7 @@ const nativeServer = nativeMcp.mcpServers?.prerenderbuddy;
 const portableServer = portableMcp.mcpServers?.prerenderbuddy;
 for (const server of [nativeServer, portableServer]) {
   if (server?.command !== "npx") fail("MCP server must start through npx.");
-  if (server?.args?.join(" ") !== "--yes @prerenderbuddy/mcp@0.2.5") {
+  if (server?.args?.join(" ") !== "--yes @prerenderbuddy/mcp@0.2.6") {
     fail("MCP package must be pinned to the reviewed version.");
   }
 }
