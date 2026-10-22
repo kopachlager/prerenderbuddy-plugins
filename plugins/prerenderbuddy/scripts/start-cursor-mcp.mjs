@@ -12,7 +12,7 @@ if (apiKey) env.PRERENDER_BUDDY_API_KEY = apiKey;
 else delete env.PRERENDER_BUDDY_API_KEY;
 
 // Use the same reviewed package as the portable and other native manifests.
-const child = spawn("npx", ["--yes", "@prerenderbuddy/mcp@0.2.5"], {
+const child = spawn("npx", ["--yes", "@prerenderbuddy/mcp@0.2.6"], {
   env,
   stdio: "inherit",
   shell: process.platform === "win32",

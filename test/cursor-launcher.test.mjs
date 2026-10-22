@@ -38,7 +38,7 @@ test("Cursor launcher passes stdio, preserves the pinned command and selects cre
       });
       const [metadata, echoed] = output.trim().split("\n");
       const parsed = JSON.parse(metadata);
-      assert.deepEqual(parsed.args, ["--yes", "@prerenderbuddy/mcp@0.2.5"]);
+      assert.deepEqual(parsed.args, ["--yes", "@prerenderbuddy/mcp@0.2.6"]);
       assert.equal(parsed.key, row.expected);
       assert.equal(parsed.alias, null);
       assert.equal(echoed, "stdio probe");

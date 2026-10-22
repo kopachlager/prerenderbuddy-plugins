@@ -1,7 +1,7 @@
 {
   "name": "prerenderbuddy",
   "displayName": "Prerender Buddy",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "description": "Check crawler readability, robots.txt, sitemaps and llms.txt, and review Prerender Buddy AI visibility and citation evidence.",
   "author": {
     "name": "Prerender Buddy",
