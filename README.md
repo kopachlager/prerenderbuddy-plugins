@@ -108,7 +108,7 @@ grok plugin install prerenderbuddy --trust
 Or add the local MCP server without the plugin package:
 
 ```sh
-grok mcp add prerenderbuddy -- npx --yes @prerenderbuddy/mcp@0.2.5
+grok mcp add prerenderbuddy -- npx --yes @prerenderbuddy/mcp@0.2.7
 ```
 
 ### Grok Bot

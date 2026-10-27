@@ -66,3 +66,7 @@ The one-time Cursor CLI sign-in completed on October 6. Two authenticated Cursor
 The first public call stopped at Cursor's individual-tool approval gate. The successful tests used project-level permissions allowing only the relevant PB tool, with shell and file writes denied. `--approve-mcps` alone does not approve every tool call; setup documentation now explains this. This was a host permission requirement, not a plugin failure.
 
 Combined plugin/skill/MCP operation is verified in Cursor Agent CLI. The desktop installation UI and other operating systems remain unverified. Public submission and manual marketplace approval are separate, unconfirmed steps.
+
+## Security maintenance — 2026-10-27
+
+The current installation pin is MCP 0.2.7, the security-maintained read-only line. It preserves the earlier runtime tools and permissions. The Grok submission remains pinned to its reviewed 0.2.5 commit until that submission is updated separately.

@@ -8,7 +8,7 @@ Use Prerender Buddy to inspect crawler-visible HTML and discovery files from Cur
 - A Cursor version that supports plugins.
 - Starter, Growth or Pro on PB for optional workspace evidence.
 
-The Cursor package includes two skills and the pinned `@prerenderbuddy/mcp@0.2.5` server. It uses a Cursor manifest and MCP configuration alongside the existing portable, Codex, Claude and Grok files.
+The Cursor package includes two skills and the pinned `@prerenderbuddy/mcp@0.2.7` server. It uses a Cursor manifest and MCP configuration alongside the existing portable, Codex, Claude and Grok files.
 
 ## Install
 
