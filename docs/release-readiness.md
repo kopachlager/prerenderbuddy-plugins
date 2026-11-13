@@ -70,3 +70,7 @@ Combined plugin/skill/MCP operation is verified in Cursor Agent CLI. The desktop
 ## Security maintenance — 2026-10-27
 
 The current installation pin is MCP 0.2.7, the security-maintained read-only line. It preserves the earlier runtime tools and permissions. The Grok submission remains pinned to its reviewed 0.2.5 commit until that submission is updated separately.
+
+## Security maintenance — 2026-11-13
+
+The installation pin advances to MCP 0.2.8 after package verification. It remains the read-only line with the same ten tools and permissions. The dependency patch, safe retry guidance and CLI metadata alignment do not add article writes. Hosted MCP 0.4.0 is a separate connection with optional saved-data scopes; tool discovery, client support and explicit authorization must be verified there. Pending third-party catalog pins remain separate until reviewed.
